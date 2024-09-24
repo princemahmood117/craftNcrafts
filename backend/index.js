@@ -19,7 +19,7 @@ require('dotenv').config();
 
 
 
-const { MongoClient, ServerApiVersion } = require('mongodb');
+const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.ddujh.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
 
 // console.log(uri);
@@ -67,11 +67,12 @@ async function run() {
 
         // for deleting
 
-        app.delete('/coffee/:id', async (req,res)=>{
+        app.delete('/crafts/:id', async (req,res)=>{
             const id = req.params.id
-            const query = {_id:new ObjectId(id)} // ডাটাবেজে _id দেওয়া আছে বোলে এখানে _id দিয়েই কুয়েরি চালাতে হবে
+            const query = {_id:new ObjectId(id)}
+             // ডাটাবেজে _id দেওয়া আছে বোলে এখানে _id দিয়েই কুয়েরি চালাতে হবে
       
-            const result = await coffeeCollection.deleteOne(query);
+            const result = await craftsCollection.deleteOne(query);
       
             res.send(result)
           })

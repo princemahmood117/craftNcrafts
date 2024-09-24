@@ -2,13 +2,11 @@ import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
 
-const CraftCard = ({craft,setCraft,crafts}) => {
+const CraftCard = ({craft,setCrafts,crafts}) => {
 
     const {name, price, rating, photo, user_name,_id} = craft;
 
     const handleDelete = (_id) => {
-    
-        // console.log(_id);
     
         Swal.fire({
           title: "Are you sure?",
@@ -35,7 +33,7 @@ const CraftCard = ({craft,setCraft,crafts}) => {
                   });
     
                   const remaining = crafts.filter(cof => cof._id !== _id)
-                  setCraft(remaining)
+                  setCrafts(remaining)
                 }
     
               });
