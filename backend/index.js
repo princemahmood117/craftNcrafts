@@ -77,6 +77,57 @@ async function run() {
             res.send(result)
           })
 
+        
+
+          // for update
+
+
+          app.get('/crafts/:id', async(req,res)=>{
+            const id = req.params.id;
+            const query = {_id : new ObjectId(id)};
+      
+            const result = await craftsCollection.findOne(query)
+            res.send(result)
+          })
+
+
+             // [update operation]
+    app.put('/crafts/:id', async(req,res)=>{
+        const id = req.params.id;
+        const filter = {_id : new ObjectId(id)};
+  
+        
+        const updateCraft = req.body; // রিকোয়েস্টের বডি থেকে ডাটা গুলো নিতে হবে
+  
+        const options = {upsert:true}; // থাকলে আপডেট করবা,না থাকলে নতুন ভাবে ক্রিয়েট করবা
+  
+  
+        const crafts = {
+          $set : {
+  
+            name : updateCraft.name,
+            category : updateCraft.category,
+            details : updateCraft.details,
+            price : updateCraft.price,
+            rating : updateCraft.rating,
+            details : updateCraft.details,
+            photo : updateCraft.photo,
+            processing_time : updateCoffee.processing_time,
+  
+          }
+        }
+  
+        const result = await coffeeCollection.updateOne(filter,crafts,options)
+  
+        res.send(result);
+  
+      })
+      
+      
+
+
+
+
 
 
 

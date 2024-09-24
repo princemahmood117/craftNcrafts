@@ -1,19 +1,68 @@
 import { useLoaderData } from "react-router-dom";
+import Swal from "sweetalert2";
 
 
 const UpdateCraft = () => {
 
     const updateCraft = useLoaderData()
 
+    const {name, price, rating, photo,_id} = updateCraft;
+
+    const handleUpdateCraft = (e) =>{
+        e.preventDefault();
+
+        const form = e.target;
+    
+        const name = form.name.value;
+        const category = form.category.value;
+        const details = form.details.value;
+        const price = form.price.value;
+        const rating = form.rating.value;
+        const photo = form.photo.value;
+        const processing_time = form.processing_time.value;
+     
+    
+        const updateCraft = {
+          name,
+          category,
+          price,
+          rating,
+          details,
+          processing_time,
+          photo,
+        };
+
+        fetch(`http://localhost:5000/crafts/${_id}`, {
+            // request will be sent to this url
+            method: "PUT",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(updateCraft),
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              if (data.modifiedCount > 0) {
+                Swal.fire({
+                    title: "Success!",
+                    text: "Coffee Updated Successfully",
+                    icon: "success",
+                    confirmButtonText: "Okay",
+                  });
+              }
+            });
+
+    }
+
     return (
         <div>
 
 <div className="bg-[#F4F3F0] p-24">
         <h1 className="text-purple-600 text-3xl text-center font-extrabold">
-          Add Crafts here
+          Update your information
         </h1>
 
-        <form onSubmit={handleAddCraft}>
+        <form onSubmit={handleUpdateCraft}>
           {/* item-name and category */}
 
           <div className="md:flex gap-8">
