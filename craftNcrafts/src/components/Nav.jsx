@@ -19,9 +19,9 @@ const Nav = () => {
               className={({ isActive }) =>
                 isActive ? "text-white bg-slate-500" : ""
               }
-              to="/about"
+              to="/addCrafts"
             >
-              About
+              Add Crafts
             </NavLink>
           </li>
           <li>
@@ -29,12 +29,12 @@ const Nav = () => {
               className={({ isActive }) =>
                 isActive ? "text-white bg-slate-500" : ""
               }
-              to="/career"
+              to="/allCrafts"
             >
-              Career
+              All crafts
             </NavLink>
           </li>
-          <li>
+          {/* <li>
             <NavLink
               className={({ isActive }) =>
                 isActive ? "text-white bg-slate-500" : ""
@@ -43,7 +43,7 @@ const Nav = () => {
             >
               Add Craft
             </NavLink>
-          </li>
+          </li> */}
           
           <li>
             <NavLink

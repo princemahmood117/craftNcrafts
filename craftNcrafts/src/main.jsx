@@ -12,6 +12,8 @@ import Root from './layout/Root.jsx';
 import Home from './components/Home.jsx';
 import Login from './components/Login.jsx';
 import Register from './components/Register.jsx';
+import AddCrafts from './components/AddCrafts.jsx';
+import AllCrafts from './components/AllCrafts.jsx';
 
 
 
@@ -33,6 +35,15 @@ const router = createBrowserRouter([
         path : '/register',
         element : <Register></Register>
       },
+      {
+        path : '/addCrafts',
+        element : <AddCrafts></AddCrafts>
+      },
+      {
+        path : '/allCrafts',
+        element : <AllCrafts></AllCrafts>,
+        loader : ()=> fetch('http://localhost:5000/crafts')
+      }
 
     ],
   },

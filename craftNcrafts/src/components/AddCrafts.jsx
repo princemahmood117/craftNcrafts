@@ -10,21 +10,25 @@ const AddCrafts = () => {
         const form = e.target;
     
         const name = form.name.value;
-        const quantity = form.quantity.value;
-        const supplier = form.supplier.value;
-        const taste = form.taste.value;
         const category = form.category.value;
         const details = form.details.value;
+        const price = form.price.value;
+        const rating = form.rating.value;
         const photo = form.photo.value;
+        const processing_time = form.processing_time.value;
+        const user_name = form.user_name.value;
+        const email = form.email.value;
     
-        const newCoffee = {
+        const newCraft = {
           name,
-          quantity,
-          supplier,
-          taste,
           category,
+          price,
+          rating,
           details,
+          processing_time,
           photo,
+          email,
+          user_name,
         };
     
         // console.log(newCoffee);
@@ -38,14 +42,14 @@ const AddCrafts = () => {
           headers: {
             "content-type": "application/json",
           },
-          body: JSON.stringify(newCoffee),
+          body: JSON.stringify(newCraft),
         })
           .then((res) => res.json())
           .then((data) => {
             if (data.insertedId) {
               Swal.fire({
                 title: "Success!",
-                text: "Coffee Added Successfully",
+                text: "Craft Added Successfully",
                 icon: "success",
                 confirmButtonText: "Okay",
               });
@@ -62,17 +66,17 @@ const AddCrafts = () => {
         </h1>
 
         <form onSubmit={handleAddCraft}>
-          {/* coffe-name and quantity */}
+          {/* item-name and category */}
 
           <div className="md:flex gap-8">
             <div className="form-control md:w-1/2">
               <label className="label">
-                <span className="label-text">Coffee</span>
+                <span className="label-text">Item Name</span>
               </label>
               <label className="input-group">
                 <input
                   type="text"
-                  placeholder="Coffee Name"
+                  placeholder="Item Name"
                   className="input input-bordered rounded-sm w-full"
                   name="name"
                 />
@@ -81,68 +85,54 @@ const AddCrafts = () => {
 
             <div className="form-control md:w-1/2">
               <label className="label">
-                <span className="label-text">Quantity</span>
-              </label>
-              <label className="input-group">
-                <input
-                  type="text"
-                  placeholder="Quantity"
-                  className="input input-bordered rounded-sm w-full"
-                  name="quantity"
-                />
-              </label>
-            </div>
-          </div>
-
-          {/* supplier and taste */}
-
-          <div className="md:flex gap-8">
-            <div className="form-control md:w-1/2">
-              <label className="label">
-                <span className="label-text">Supplier</span>
-              </label>
-              <label className="input-group">
-                <input
-                  type="text"
-                  placeholder="Supplier Name"
-                  className="input input-bordered rounded-sm w-full"
-                  name="supplier"
-                />
-              </label>
-            </div>
-
-            <div className="form-control md:w-1/2">
-              <label className="label">
-                <span className="label-text">Taste</span>
-              </label>
-              <label className="input-group">
-                <input
-                  type="text"
-                  placeholder="Taste"
-                  className="input input-bordered rounded-sm w-full"
-                  name="taste"
-                />
-              </label>
-            </div>
-          </div>
-
-          {/* category and details */}
-
-          <div className="md:flex gap-8">
-            <div className="form-control md:w-1/2">
-              <label className="label">
                 <span className="label-text">Category</span>
               </label>
               <label className="input-group">
                 <input
                   type="text"
-                  placeholder="Category"
+                  placeholder="category"
                   className="input input-bordered rounded-sm w-full"
                   name="category"
                 />
               </label>
             </div>
+          </div>
 
+          {/* price and rating */}
+
+          <div className="md:flex gap-8">
+            <div className="form-control md:w-1/2">
+              <label className="label">
+                <span className="label-text">Price</span>
+              </label>
+              <label className="input-group">
+                <input
+                  type="text"
+                  placeholder="price"
+                  className="input input-bordered rounded-sm w-full"
+                  name="price"
+                />
+              </label>
+            </div>
+
+            <div className="form-control md:w-1/2">
+              <label className="label">
+                <span className="label-text">Rating</span>
+              </label>
+              <label className="input-group">
+                <input
+                  type="text"
+                  placeholder="rating"
+                  className="input input-bordered rounded-sm w-full"
+                  name="rating"
+                />
+              </label>
+            </div>
+          </div>
+
+          {/*  details and processing_time */}
+
+          <div className="md:flex gap-8">
             <div className="form-control md:w-1/2">
               <label className="label">
                 <span className="label-text">Details</span>
@@ -150,9 +140,23 @@ const AddCrafts = () => {
               <label className="input-group">
                 <input
                   type="text"
-                  placeholder="Details"
+                  placeholder="details"
                   className="input input-bordered rounded-sm w-full"
                   name="details"
+                />
+              </label>
+            </div>
+
+            <div className="form-control md:w-1/2">
+              <label className="label">
+                <span className="label-text">Processing Time</span>
+              </label>
+              <label className="input-group">
+                <input
+                  type="text"
+                  placeholder="processing_time"
+                  className="input input-bordered rounded-sm w-full"
+                  name="processing_time"
                 />
               </label>
             </div>
@@ -176,10 +180,61 @@ const AddCrafts = () => {
             </div>
           </div>
 
+          {/* processing time */}
+          {/* <div className="md:flex gap-8">
+            <div className="form-control md:w-full">
+              <label className="label">
+                <span className="label-text">Processing Time</span>
+              </label>
+              <label className="input-group">
+                <input
+                  type="text"
+                  placeholder="Processing time"
+                  className="input input-bordered rounded-sm w-full"
+                  name="processing_time"
+                />
+              </label>
+            </div>
+          </div> */}
+
+          {/* user name */}
+          <div className="md:flex gap-8">
+            <div className="form-control md:w-full">
+              <label className="label">
+                <span className="label-text">User Name</span>
+              </label>
+              <label className="input-group">
+                <input
+                  type="text"
+                  placeholder="user name"
+                  className="input input-bordered rounded-sm w-full"
+                  name="user_name"
+                />
+              </label>
+            </div>
+          </div>
+
+          {/* user email */}
+          <div className="md:flex gap-8">
+            <div className="form-control md:w-full">
+              <label className="label">
+                <span className="label-text">User Email</span>
+              </label>
+              <label className="input-group">
+                <input
+                  type="email"
+                  placeholder="Email"
+                  className="input input-bordered rounded-sm w-full"
+                  name="email"
+                />
+              </label>
+            </div>
+          </div>
+
           <input
             type="submit"
             value="Add Coffee"
-            className="btn btn-block bg-slate-500"
+            className="btn btn-block bg-slate-500 mt-4"
           />
         </form>
       </div>
