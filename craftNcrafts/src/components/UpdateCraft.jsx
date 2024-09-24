@@ -1,62 +1,10 @@
-import Swal from "sweetalert2";
+import { useLoaderData } from "react-router-dom";
 
 
-const AddCrafts = () => {
+const UpdateCraft = () => {
 
+    const updateCraft = useLoaderData()
 
-    const handleAddCraft = (e) => {
-        e.preventDefault();
-    
-        const form = e.target;
-    
-        const name = form.name.value;
-        const category = form.category.value;
-        const details = form.details.value;
-        const price = form.price.value;
-        const rating = form.rating.value;
-        const photo = form.photo.value;
-        const processing_time = form.processing_time.value;
-        const user_name = form.user_name.value;
-        const email = form.email.value;
-    
-        const newCraft = {
-          name,
-          category,
-          price,
-          rating,
-          details,
-          processing_time,
-          photo,
-          email,
-          user_name,
-        };
-    
-        // console.log(newCoffee);
-    
-        // (A) send the 'newCoffee' data to the server
-    
-        // have to send from client to server, so have to use server side's url where the data will be stored
-        fetch("http://localhost:5000/crafts", {
-          // request will be sent to this url
-          method: "POST",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify(newCraft),
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            if (data.insertedId) {
-              Swal.fire({
-                title: "Success!",
-                text: "Craft Added Successfully",
-                icon: "success",
-                confirmButtonText: "Okay",
-              });
-            }
-            form.reset();
-          });
-      };
     return (
         <div>
 
@@ -180,44 +128,9 @@ const AddCrafts = () => {
             </div>
           </div>
 
-
-          {/* user name */}
-          <div className="md:flex gap-8">
-            <div className="form-control md:w-full">
-              <label className="label">
-                <span className="label-text">User Name</span>
-              </label>
-              <label className="input-group">
-                <input
-                  type="text"
-                  placeholder="user name"
-                  className="input input-bordered rounded-sm w-full"
-                  name="user_name"
-                />
-              </label>
-            </div>
-          </div>
-
-          {/* user email */}
-          <div className="md:flex gap-8">
-            <div className="form-control md:w-full">
-              <label className="label">
-                <span className="label-text">User Email</span>
-              </label>
-              <label className="input-group">
-                <input
-                  type="email"
-                  placeholder="Email"
-                  className="input input-bordered rounded-sm w-full"
-                  name="email"
-                />
-              </label>
-            </div>
-          </div>
-
           <input
             type="submit"
-            value="Add Item"
+            value="Update"
             className="btn btn-block bg-slate-500 mt-4"
           />
         </form>
@@ -227,4 +140,4 @@ const AddCrafts = () => {
     );
 };
 
-export default AddCrafts;
+export default UpdateCraft;

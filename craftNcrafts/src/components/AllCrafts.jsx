@@ -9,7 +9,7 @@ const AllCrafts = () => {
 
     const [crafts,setCrafts] = useState(loadCrafts)
     return (
-        <div className="m-20">
+        <div className="mt-10">
         <h1 className="text-purple-600 text-3xl text-center">
           Total Craft : {crafts.length}
         </h1>

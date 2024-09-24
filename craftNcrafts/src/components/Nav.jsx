@@ -34,16 +34,6 @@ const Nav = () => {
               All crafts
             </NavLink>
           </li>
-          {/* <li>
-            <NavLink
-              className={({ isActive }) =>
-                isActive ? "text-white bg-slate-500" : ""
-              }
-              to="/career"
-            >
-              Add Craft
-            </NavLink>
-          </li> */}
           
           <li>
             <NavLink

@@ -65,7 +65,7 @@ const CraftCard = ({craft,setCrafts,crafts}) => {
 
             <button className="btn join-item">View</button>
 
-            <Link to={`/updateCoffee/${_id}`}> <button className="btn join-item">Edit</button> </Link>
+            <Link to={`/updateCraft/${_id}`}> <button className="btn join-item">Edit</button> </Link>
 
             <button
               onClick={() => handleDelete(_id)}
