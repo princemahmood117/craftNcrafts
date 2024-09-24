@@ -1,63 +1,60 @@
+import { Fade } from "react-awesome-reveal";
 import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 
-
 const UpdateCraft = () => {
+  const updateCraft = useLoaderData();
 
-    const updateCraft = useLoaderData()
+  const { name, price, rating, category, photo, details, _id, processing_time } = updateCraft;
 
-    const {name, price, rating, photo,_id} = updateCraft;
+  const handleUpdateCraft = (e) => {
+    e.preventDefault();
 
-    const handleUpdateCraft = (e) =>{
-        e.preventDefault();
+    const form = e.target;
 
-        const form = e.target;
-    
-        const name = form.name.value;
-        const category = form.category.value;
-        const details = form.details.value;
-        const price = form.price.value;
-        const rating = form.rating.value;
-        const photo = form.photo.value;
-        const processing_time = form.processing_time.value;
-     
-    
-        const updateCraft = {
-          name,
-          category,
-          price,
-          rating,
-          details,
-          processing_time,
-          photo,
-        };
+    const name = form.name.value;
+    const category = form.category.value;
+    const details = form.details.value;
+    const price = form.price.value;
+    const rating = form.rating.value;
+    const photo = form.photo.value;
+    const processing_time = form.processing_time.value;
 
-        fetch(`http://localhost:5000/crafts/${_id}`, {
-            // request will be sent to this url
-            method: "PUT",
-            headers: {
-              "content-type": "application/json",
-            },
-            body: JSON.stringify(updateCraft),
-          })
-            .then((res) => res.json())
-            .then((data) => {
-              if (data.modifiedCount > 0) {
-                Swal.fire({
-                    title: "Success!",
-                    text: "Coffee Updated Successfully",
-                    icon: "success",
-                    confirmButtonText: "Okay",
-                  });
-              }
-            });
+    const updateCraft = {
+      name,
+      category,
+      price,
+      rating,
+      details,
+      processing_time,
+      photo,
+    };
 
-    }
+    fetch(`http://localhost:5000/crafts/${_id}`, {
+      // request will be sent to this url
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(updateCraft),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.modifiedCount > 0) {
+          Swal.fire({
+            title: "Success!",
+            text: "Item Updated Successfully",
+            icon: "success",
+            confirmButtonText: "Okay",
+          });
+        }
+      });
+  };
 
-    return (
-        <div>
-
-<div className="bg-[#F4F3F0] p-24">
+  return (
+    <div>
+   <Fade>
+   <div className=" p-24 rounded-md">
         <h1 className="text-purple-600 text-3xl text-center font-extrabold">
           Update your information
         </h1>
@@ -76,7 +73,9 @@ const UpdateCraft = () => {
                   placeholder="Item Name"
                   className="input input-bordered rounded-sm w-full"
                   name="name"
+                  defaultValue={name}
                 />
+                
               </label>
             </div>
 
@@ -90,6 +89,7 @@ const UpdateCraft = () => {
                   placeholder="category"
                   className="input input-bordered rounded-sm w-full"
                   name="category"
+                  defaultValue={category}
                 />
               </label>
             </div>
@@ -108,6 +108,7 @@ const UpdateCraft = () => {
                   placeholder="price"
                   className="input input-bordered rounded-sm w-full"
                   name="price"
+                  defaultValue={price}
                 />
               </label>
             </div>
@@ -122,6 +123,7 @@ const UpdateCraft = () => {
                   placeholder="rating"
                   className="input input-bordered rounded-sm w-full"
                   name="rating"
+                  defaultValue={rating}
                 />
               </label>
             </div>
@@ -140,6 +142,7 @@ const UpdateCraft = () => {
                   placeholder="details"
                   className="input input-bordered rounded-sm w-full"
                   name="details"
+                  defaultValue={details}
                 />
               </label>
             </div>
@@ -154,6 +157,7 @@ const UpdateCraft = () => {
                   placeholder="processing_time"
                   className="input input-bordered rounded-sm w-full"
                   name="processing_time"
+                  defaultValue={processing_time}
                 />
               </label>
             </div>
@@ -172,6 +176,7 @@ const UpdateCraft = () => {
                   placeholder="Photo URL"
                   className="input input-bordered rounded-sm w-full"
                   name="photo"
+                  defaultValue={photo}
                 />
               </label>
             </div>
@@ -184,9 +189,9 @@ const UpdateCraft = () => {
           />
         </form>
       </div>
-            
-        </div>
-    );
+   </Fade>
+    </div>
+  );
 };
 
 export default UpdateCraft;

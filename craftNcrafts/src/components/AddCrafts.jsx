@@ -60,7 +60,7 @@ const AddCrafts = () => {
     return (
         <div>
 
-<div className="bg-[#F4F3F0] p-24">
+<div className="p-24">
         <h1 className="text-purple-600 text-3xl text-center font-extrabold">
           Add Crafts here
         </h1>

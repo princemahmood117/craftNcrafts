@@ -112,12 +112,12 @@ async function run() {
             rating : updateCraft.rating,
             details : updateCraft.details,
             photo : updateCraft.photo,
-            processing_time : updateCoffee.processing_time,
+            processing_time : updateCraft.processing_time,
   
           }
         }
   
-        const result = await coffeeCollection.updateOne(filter,crafts,options)
+        const result = await craftsCollection.updateOne(filter,crafts,options)
   
         res.send(result);
   
