@@ -1,10 +1,11 @@
+import {JackInTheBox } from "react-awesome-reveal";
 import { Link } from "react-router-dom";
 
 
 const Login = () => {
     return (
  
-
+<JackInTheBox>
 <div className="w-full max-w-md p-8 space-y-3 rounded-xl bg-slate-800 m-auto mt-10">
 	<h1 className="text-2xl font-bold text-center">Login</h1>
 	<form noValidate="" action="" className="space-y-6">
@@ -48,6 +49,7 @@ const Login = () => {
 	
 	</p>
 </div>
+</JackInTheBox>
             
 
     );
