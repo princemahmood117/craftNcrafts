@@ -55,12 +55,11 @@ async function run() {
 // for insert
         app.post('/crafts', async(req,res)=>{
             const newCrafts = req.body; 
-            // from (A) : '/coffee' থেকে যেই ডাটা গুলা আসবে সেগুলা req এর মধ্যে body তে করে আসবে| যেহেতু ডাটা গুলা এসে সার্ভারে এড হবে,তাই এখানে মেথদ হবে app.post()। সেখান থেকে ডাটাবেইজে পাঠানো হবে
+            
             console.log(newCrafts);
     
             const result = await craftsCollection.insertOne(newCrafts)
-            // database এর cpllection [coffee] এর ভেতর একটা একটা করে পাঠানো হয়েছে, পাঠানো হলে সেটা একটা রেস্পন্স দিবে
-    
+            
             res.send(result);
         })
 
@@ -70,8 +69,7 @@ async function run() {
         app.delete('/crafts/:id', async (req,res)=>{
             const id = req.params.id
             const query = {_id:new ObjectId(id)}
-             // ডাটাবেজে _id দেওয়া আছে বোলে এখানে _id দিয়েই কুয়েরি চালাতে হবে
-      
+            
             const result = await craftsCollection.deleteOne(query);
       
             res.send(result)
@@ -97,9 +95,10 @@ async function run() {
         const filter = {_id : new ObjectId(id)};
   
         
-        const updateCraft = req.body; // রিকোয়েস্টের বডি থেকে ডাটা গুলো নিতে হবে
+        const updateCraft = req.body; 
   
-        const options = {upsert:true}; // থাকলে আপডেট করবা,না থাকলে নতুন ভাবে ক্রিয়েট করবা
+        const options = {upsert:true}; 
+       
   
   
         const crafts = {

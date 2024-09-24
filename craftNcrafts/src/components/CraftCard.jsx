@@ -53,7 +53,9 @@ const CraftCard = ({ craft, setCrafts, crafts }) => {
 
           <div className="card-actions justify-end">
             <div className="join join-vertical space-y-3">
-              <button className="btn join-item">View</button>
+              
+              <Link to={`/craftDetails/${_id}`}>
+              <button className="btn join-item">View</button></Link>
 
               <Link to={`/updateCraft/${_id}`}>
                 {" "}

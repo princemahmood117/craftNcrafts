@@ -15,6 +15,8 @@ import Register from './components/Register.jsx';
 import AddCrafts from './components/AddCrafts.jsx';
 import AllCrafts from './components/AllCrafts.jsx';
 import UpdateCraft from './components/UpdateCraft.jsx';
+import CraftDetails from './components/CraftDetails.jsx';
+import AboutUs from './components/AboutUs.jsx';
 
 
 
@@ -51,7 +53,18 @@ const router = createBrowserRouter([
         element : <UpdateCraft></UpdateCraft>,
         loader :  ({ params }) => fetch(`http://localhost:5000/crafts/${params.id}`),
 
-      }
+      },
+
+      {
+        path : '/craftDetails/:id',
+        element : <CraftDetails></CraftDetails> ,
+        loader : ({ params }) => fetch(`http://localhost:5000/crafts/${params.id}`),
+      },
+
+      {
+        path : '/about',
+        element : <AboutUs></AboutUs>
+      },
 
     ],
   },
