@@ -1,6 +1,7 @@
 import  { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from './ContextProvider/ContextProvider';
+import { Slide } from 'react-awesome-reveal';
 
 
 const Register = () => {
@@ -49,7 +50,8 @@ const Register = () => {
 
     }
     return (
-        <div className="heromin-h-screen">
+ <Slide>
+           <div className="heromin-h-screen">
         <div className="hero-content flex-col lg:flex-row-reverse">
           <div className="text-center lg:text-left">
             <h1 className="text-5xl font-bold italic">Register <span className='text-sky-500'>Here!</span> </h1>
@@ -87,7 +89,7 @@ const Register = () => {
 
 
             </form>
-            <p className='ml-4'>First time here? <Link to='/login' className='text-blue-600 font-bold'>Login here</Link> </p>
+            <p className='ml-4'>Already registered? <Link to='/login' className='text-blue-600 font-bold'>Login here</Link> </p>
           </div>
 
          
@@ -101,6 +103,7 @@ const Register = () => {
             <p className="text-red-600 text-center p-2"> {createdUserError} </p>
           )}
       </div>
+ </Slide>
     );
 };
 

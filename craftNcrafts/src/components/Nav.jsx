@@ -1,7 +1,28 @@
+import { useContext, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "./ContextProvider/ContextProvider";
 
 
 const Nav = () => {
+
+  const {user,logOut} = useContext(AuthContext)
+
+    // show the top of the page after clicking on "Read more"
+    useEffect(() => {
+      window.scrollTo(0, 0);
+    }, []);
+
+    const handleLogOut = () => {
+      logOut()
+        .then(() => {
+          console.log("Logged out successfully");
+        })
+  
+        .catch((error) => {
+          console.log(error);
+        });
+    };
+
     const links = (
         <>
           <li>
@@ -36,14 +57,14 @@ const Nav = () => {
           </li>
           
           <li>
-            <NavLink
+            {/* <NavLink
               className={({ isActive }) =>
                 isActive ? "text-white bg-slate-500" : ""
               }
               to="/login"
             >
               Login
-            </NavLink>
+            </NavLink> */}
           </li>
         </>
       );
@@ -82,10 +103,22 @@ const Nav = () => {
           </ul>
         </div>
 
-        
         <div className="navbar-end">
-          <a className="btn">Button</a>
-        </div>
+        {user ? (
+          <>
+            <span className="mr-2">
+             {user.email}
+            </span>
+            <a onClick={handleLogOut} className="btn btn-sm">
+              SignOut
+            </a>
+          </>
+        ) : (
+          <Link to="/login">
+            <button className="btn btn-sm">Login</button>
+          </Link>
+        )}
+      </div>
       </div>
     );
 };
