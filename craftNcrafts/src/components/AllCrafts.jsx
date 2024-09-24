@@ -10,8 +10,8 @@ const AllCrafts = () => {
     const [crafts,setCrafts] = useState(loadCrafts)
     return (
         <div className="mt-10">
-        <h1 className="text-purple-600 text-3xl text-center">
-          Total Craft : {crafts.length}
+        <h1 className="text-purple-600 text-3xl text-center font-bold font-serif">
+          Your Crafts
         </h1>
 
         <div className="grid md:grid-cols-2 gap-4 mt-8">

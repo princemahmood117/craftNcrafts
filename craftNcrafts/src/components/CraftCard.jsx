@@ -41,7 +41,7 @@ const CraftCard = ({ craft, setCrafts, crafts }) => {
   <Roll>
   <div className="card card-side bg-base-100 shadow-xl p-2">
         <figure className="">
-          <img src={photo} alt="Movie" />
+          <img className="md:w-64 md:h-[200px]" src={photo} alt="Movie" />
         </figure>
         <div className="w-full flex justify-between p-4">
           <div className="space-y-2">
